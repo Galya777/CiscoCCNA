@@ -1,0 +1,64 @@
+Task Part 1
+
+192.168.10.0/24
+255.255.255.0
+
+100 hosts
+A: 
+2^7=128
+32-7=25
+
+192.168.10.0/25
+192.168.10.1 to 192.168.10.126   
+Broadcast:
+192.168.10.127/25
+
+50 hosts
+B: 
+2^6=64
+32-6=26
+
+192.168.10.128/26
+192.168.10.129 to 192.168.10.191
+Broadcast:
+192.168.10.192/26
+
+                   
+
+                       Subnet A         Subnet B
+
+First Address           192.168.10.1     192.168.10.126   
+
+Last address           192.168.10.129   192.168.10.191
+
+Maximum numbers of hosts    126              62
+
+c.
+
+Device	              IP address	Subnet Mask	   Gateway	
+PC-A	           192.168.10.126	255.255.255.128	  192.168.10.1	
+R1-G0/0/0	  192.168.10.129	255.255.255.192	     N/A	
+R1-G0/0/1	 192.168.10.1	        255.255.255.128	    N/A	
+S1	         192.168.10.2	         192.168.10.1	255.255.255.128	
+PC-B	        192.168.10.190	     255.255.255.192	192.168.10.129	
+
+
+
+d.
+
+2001:db8:acad::/48
+
+Assigned to Interface	IPv6 Subnet Address	Prefix Length
+G0/0/1	                 2001:db8:acad:a::/64	     64
+G0/0/0	                2001:db8:acad:b::/64	     64
+
+
+
+
+Device	       IPv6 address	     Prefix Length	Gateway	Points
+ 
+R1-G0/0/0      2001:db8:acad:a::1       64               N/A
+
+R1-G0/0/1     2001:db8:acad:b::1        64               N/A
+ 
+S1            2001:db8:acad:a::2        64             2001:db8:acad:a::1  
